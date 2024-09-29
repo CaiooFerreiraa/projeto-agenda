@@ -1,0 +1,57 @@
+<%- include('includes/header') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center ">Faça login ou crie sua conta</h1>
+
+      <%- include('includes/msg') %>
+
+      <div class="row">
+
+        <div class="col-lg">
+          <h4>Faça seu cadastro</h4>
+          <p>Caso n tenha uma conta, crie uma abaixo:</p>
+          <form action="/login/register" method="post">
+            <!-- Aqui é nosso token para impedir ataques de csrf -->
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>"> 
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Seu email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Sua senha</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Criar minha conta</button>
+          </form>
+        </div>
+
+        <div class="col-lg">
+          <h4>Faça seu login</h4>
+          <p>Caso tenha uma conta faça seu login abaixo:</p>
+          <form action="/login/firstLogin" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Seu email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Sua senha</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Fazer login</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>
